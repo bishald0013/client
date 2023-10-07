@@ -4,7 +4,7 @@ export const userAuthApi = createApi({
     reducerPath: 'userAuthApi',
 
     baseQuery: fetchBaseQuery({
-        baseUrl: `https://128.199.66.174:5001/api/user`
+        baseUrl: "https://128.199.66.174:5001/api/user"
     }),
 
     endpoints: (builder) => ({
