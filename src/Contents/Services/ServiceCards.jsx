@@ -18,7 +18,7 @@ function ServiceCards() {
                             </div>
                             <div class="col-md-8">
                                 <div class="card-body mt-4">
-                                    <h5 class="card-title fw-bold">Comming soon</h5>
+                                    <h5 class="card-title fw-bold">Custom reminder</h5>
                                     <p class="card-text fw-regular fs-6 mt-3">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
                                     <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
                                 </div>
