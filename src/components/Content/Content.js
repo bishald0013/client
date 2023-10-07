@@ -14,7 +14,7 @@ const Content = () => {
                   customer relationships across <b>Pucc expiry date</b>,{' '}
                   <b>Fitness expiry date</b>, <b>RC expiry date</b>, and more.
               </Description>
-              <Link to='/signup'>
+              <Link to='/register'>
                 <ActionButton>Sign Up Free</ActionButton>
               </Link>
           </TextContainer>
