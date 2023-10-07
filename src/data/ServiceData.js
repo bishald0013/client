@@ -6,7 +6,7 @@ import icon4 from '../assets/svg/undraw_credit_card_payments_re_qboh.svg';
 const data = [
     {
         background: '#e4cefa',
-        header: 'Car Rent',
+        header: 'Custom reminder',
         description: 'description',
         footer: 'Last updated 3 mins ago',
         icon: icon1
