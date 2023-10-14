@@ -39,17 +39,18 @@ const Signup = () => {
         }
 
         const response = await  registerUser(credentials);
-        if(response.data.status === true){
-            navigate('/dashboard');
-            setToken(response.data.token);
-            console.log(response)
-        }else{
-            serError({
-                status: true,
-                message: response.data.message,
-                type: response.data.type
-            })
-        }
+        console.log(response)
+
+        // if(response.data.status === true){
+        //     navigate('/dashboard');
+        //     setToken(response.data.token);
+        // }else{
+        //     serError({
+        //         status: true,
+        //         message: response.data.message,
+        //         type: response.data.type
+        //     })
+        // }
         
     }
   return (
