@@ -42,7 +42,7 @@ const Signup = () => {
         if(response.data.status === true){
             navigate('/dashboard');
             setToken(response.data.token);
-            console.log(response.token)
+            console.log(response)
         }else{
             serError({
                 status: true,
