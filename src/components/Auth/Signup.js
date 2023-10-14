@@ -39,7 +39,8 @@ const Signup = () => {
         }
 
         const response = await  registerUser(credentials);
-        console.log(response)
+        // console.log(response)
+        return response;
 
         // if(response.data.status === true){
         //     navigate('/dashboard');
