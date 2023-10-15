@@ -11,7 +11,7 @@ import { getToken } from './services/localStorage';
 function App() {
 
   let token = getToken();
-  // console.log(token);
+  console.log(token);
 
   return (
     <BrowserRouter>
