@@ -43,14 +43,14 @@ const Signup = () => {
         if(response.data.status === true){
             navigate('/dashboard');
             setToken(response.data.token);
-            console.log(response)
+            // console.log(response)
         }else{
             serError({
                 status: true,
                 message: response.data.message,
                 type: response.data.type
             })
-            console.log(response)
+            // console.log(response)
         }
         
     }
