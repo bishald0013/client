@@ -11,14 +11,14 @@ import { getToken } from './services/localStorage';
 function App() {
 
   let token = getToken();
-  // console.log(token);
+  console.log(token);
 
   return (
     <BrowserRouter>
       <GlobalStyle />
       <Navbar/>
-      <Routes>
-        <Route path='/' exact element={<Home/>} />
+      <Routes>        
+        <Route path='/' exact element={token ? <Navigate to='/dashboard' /> : <Home />} />
         <Route path='/register' exact element={<Register/>} />
         <Route path='/login' exact element={<Login/>} />
         <Route path='/dashboard' element= {token ? <Dashboard/> : <Navigate to='/'/>} />
