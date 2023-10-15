@@ -4,7 +4,7 @@ export const userAuthApi = createApi({
     reducerPath: 'userAuthApi',
 
     baseQuery: fetchBaseQuery({
-        baseUrl: "http://fair-hen-bracelet.cyclic.app/api/user"
+        baseUrl: "https://fair-hen-bracelet.cyclic.app/api/user"
     }),
 
     endpoints: (builder) => ({
