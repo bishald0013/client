@@ -21,8 +21,8 @@ function App() {
         <Route path='/' exact element={token ? <Navigate to='/dashboard' /> : <Home />} />
         <Route path='/register' exact element={<Register/>} />
         <Route path='/login' exact element={<Login/>} />
-        <Route path='/dashboard' element= {token ? <Dashboard/> : <Navigate to='/'/>} />
-        {/* <Route path='/dashboard' exact element={<Dashboard/>} /> */}
+        {/* <Route path='/dashboard' element= {token ? <Dashboard/> : <Navigate to='/'/>} /> */}
+        <Route path='/dashboard' exact element={<Dashboard/>} />
       </Routes>
     </BrowserRouter>
   );
