@@ -8,21 +8,33 @@ import Register from './pages/Register';
 import Dashboard from './components/Dashboard/Dashboard';
 import { getToken } from './services/localStorage';
 
-function App() {
+import { useEffect, useState } from 'react';
 
-  let token = getToken();
+function App() {
+  const [token, setToken] = useState(() => getToken()); // Initialize with the token from localStorage
   console.log(token);
+  useEffect(() => {
+    const newToken = getToken();
+    if (newToken) {
+      setToken(newToken);
+    }
+  }, []);
 
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <Navbar/>
-      <Routes>        
-        <Route path='/' exact element={token ? <Navigate to='/dashboard' /> : <Home />} />
-        <Route path='/register' exact element={<Register/>} />
-        <Route path='/login' exact element={<Login/>} />
-        <Route path='/dashboard' element= {token ? <Dashboard/> : <Navigate to='/'/>} />
-        {/* <Route path='/dashboard' exact element={<Dashboard/>} /> */}
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={!token ? <Home /> : <Navigate to="/dashboard" />}
+        />
+        <Route path="/register" exact element={<Register />} />
+        <Route path="/login" exact element={<Login />} />
+        <Route
+          path="/dashboard"
+          element= {<Dashboard /> } />
       </Routes>
     </BrowserRouter>
   );

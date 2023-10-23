@@ -1,11 +1,10 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import { setToken } from '../../services/localStorage';
 import { useRegisterUserMutation } from '../../services/userAuthApi';
 
 const Signup = () => {
     const [credentials, setCredentials] = useState({
-        name: '',
+        userName: '',
         phoneNumber: '',
         alternateNumber: '',
         email: '',
@@ -41,16 +40,15 @@ const Signup = () => {
         const response = await  registerUser(credentials);
     
         if(response.data.status === true){
+            // setToken(response.data.token);
+            localStorage.setItem('token', response.data.token);
             navigate('/dashboard');
-            setToken(response.data.token);
-            // console.log(response)
         }else{
             serError({
                 status: true,
                 message: response.data.message,
                 type: response.data.type
             })
-            // console.log(response)
         }
         
     }
@@ -62,7 +60,7 @@ const Signup = () => {
           <h2 className='title'>Sign Up</h2>
           <div className='input-field'>
               <i className='fas fa-user'></i>
-              <input type='text' placeholder='full name' name='name' onChange={handleChange} value={credentials.name}/>
+              <input type='text' placeholder='full name' name='userName' onChange={handleChange} value={credentials.userName}/>
           </div>
           <div className='input-field'>
               <i className='fas fa-phone'></i>
