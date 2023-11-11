@@ -47,6 +47,7 @@ function Dashboard() {
     setAlertData(alertData);
 
     const response = await createAlert({alertData, token});
+    console.log(response, alertData);
 
   }
 
