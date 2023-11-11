@@ -1,18 +1,26 @@
 import React from 'react';
 
-const Alert = ({alertData}) => {
-    return (
-        <div className='card_cont w-50 my-3'>
-            <div class="card text-bg-light mb-3">
-            <div class="card-header">Name: {alertData.alertName}</div>
-            <div class="card-body">
-                <h5 class="card-title">Type: {alertData.alertType}</h5>
-                <p className="card-text">Reminder date: {alertData.alertDate.toLocaleDateString()}</p>
-                <span>Status : Pending</span>
+const Alert = ({ allAlert }) => {
+  return (
+    <>
+      {allAlert && allAlert.data && allAlert.data.length > 0 ? (
+        allAlert.data.map((a_data) => (
+          <div className='card_cont w-50 my-3' key={a_data._id}>
+            <div className="card text-bg-light mb-3">
+              <div className="card-header">Name: {a_data.a_created_by}</div>
+              <div className="card-body">
+                <h5 className="card-title">Type: {a_data.a_type}</h5>
+                <p className="card-text">Reminder date: {new Date(a_data.a_end_date).toLocaleDateString()}</p>
+                <span>Status: {a_data.a_status}</span>
+              </div>
             </div>
-            </div>
-        </div>
-    );
-}
+          </div>
+        ))
+      ) : (
+        <p>No data available</p>
+      )}
+    </>
+  );
+};
 
 export default Alert;
