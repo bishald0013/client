@@ -14,9 +14,7 @@ function Dashboard() {
   const [createAlert] = useCreateAlertMutation()
 
   const [allAlerts, setAllAlerts] = useState({})
-
   const token = localStorage.getItem('token');
-
   const {data, isSuccess} = useGetAlertsQuery(token);
 
   useEffect(() => {
@@ -25,7 +23,6 @@ function Dashboard() {
     }
   }, [data, isSuccess])
 
-console.log(alertData);
   
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,7 +44,12 @@ console.log(alertData);
     setAlertData(alertData);
 
     const response = await createAlert({alertData, token});
-    console.log(response, alertData);
+    if (response.data.setAlert.status === true) {
+        alert('Alert Created Successfully');
+        window.location.reload();
+    } else {
+        alert('Fail to create Alert. Please try again');
+    }
 
   }
 
