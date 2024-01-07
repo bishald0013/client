@@ -36,6 +36,7 @@ form {
     overflow: hidden;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
+    transform: scale(.9, .85);
 }
 
 form.signup-form {
@@ -259,6 +260,12 @@ form.signin-form {
 }
 
 @media (max-width: 870px) {
+    form {
+        padding: 0 1.5rem;
+        transform: scale(.75);
+        margin-top: -80px;
+    }
+
     .container {
         min-height: 800px;
         height: 100vh;
@@ -360,11 +367,14 @@ form.signin-form {
         top: 5%;
         transform: translate(-50%, 0);
     }
+
 }
 
 @media (max-width: 570px) {
     form {
         padding: 0 1.5rem;
+        transform: scale(.75);
+        margin-top: -80px;
     }
 
     .image {
