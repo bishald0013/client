@@ -5,6 +5,7 @@ export const userAuthApi = createApi({
 
     baseQuery: fetchBaseQuery({
         baseUrl: "https://fair-hen-bracelet.cyclic.app/api/user",
+        // baseUrl: "http://localhost:5001/api/user",
     }),
 
     endpoints: (builder) => ({
@@ -29,8 +30,30 @@ export const userAuthApi = createApi({
                     'Content-Type': 'application/json'
                 }
             })
+        }),
+
+        resetPassword: builder.mutation({
+            query: (credentials) => ({
+                url: '/reset/password/link',
+                method: 'PATCH',
+                body: credentials,
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+        }),
+
+        setNewPassword: builder.mutation({
+            query: ({credentials, id}) => ({
+                url: `/set/password/${id}`,
+                method: 'PATCH',
+                body: credentials,
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
         })
     })
 })
 
-export const { useRegisterUserMutation, useLoginUserMutation } = userAuthApi
+export const { useRegisterUserMutation, useLoginUserMutation, useResetPasswordMutation, useSetNewPasswordMutation } = userAuthApi

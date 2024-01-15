@@ -7,9 +7,7 @@ const Signin = () => {
     const [loginUser ] = useLoginUserMutation();
     const handleSubmit = async( event) => {
         event.preventDefault();
-
         const loginData = new FormData(event.currentTarget);
-
         const logInData = {
             email: loginData.get('email'),
             password: loginData.get('password')
@@ -19,12 +17,14 @@ const Signin = () => {
         if(!logInData.password) throw new Error('Password is required');
 
         const response = await loginUser(logInData);
-
         if(response.data.status === false) throw new Error('Fail to login please try again');
-
         localStorage.setItem('token', response.data.token);
         navigate('/dashboard');
         
+    }
+
+    const resetPassword = async (event) => {
+        navigate('/reset/password');
     }
 
   return (
@@ -39,7 +39,10 @@ const Signin = () => {
               <input type='password' name='password' id='password' placeholder='password' />
           </div>
           <input type='submit' value='Signin' className='btn solid' />
-      </form>
+          <div class="d-grid gap-2 d-md-block">
+            <button class="btn btn-primary w-100" onClick={resetPassword} type="button">Forget Password</button>
+          </div>
+        </form>
   )
 }
 
