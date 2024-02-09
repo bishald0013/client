@@ -11,6 +11,8 @@ import { getToken } from './services/localStorage';
 
 import { useEffect, useState } from 'react';
 import NewPassword from './components/ResetPassword/NewPassword';
+import AdminLogIn from './Admin/AdminLogIn';
+import AdminDashboard from './Admin/AdminDashboard';
 
 function App() {
   const [token, setToken] = useState(() => getToken()); // Initialize with the token from localStorage
@@ -36,6 +38,8 @@ function App() {
         <Route path="/login" exact element={<Login />} />
         <Route path="/reset/password/" exact element={<ResetPass />} />
         <Route path={'/new/password/:id?'} exact element={<NewPassword />} />
+        <Route path={'/admin/login'} exact element={<AdminLogIn/>} />
+        <Route path={'/admin/dashboard'} exact element={<AdminDashboard/>} />
         <Route
           path="/dashboard"
           element= {<Dashboard /> } />
