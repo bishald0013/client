@@ -65,9 +65,9 @@ export const userAuthApi = createApi({
             })
         }),
 
-        getAllUsers: builder.mutation({
+        getAllAlerts: builder.query({
             query: () => ({
-                url: '/getAllUser',
+                url: '/getAlerts',
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
@@ -78,4 +78,4 @@ export const userAuthApi = createApi({
     })
 })
 
-export const { useRegisterUserMutation, useLoginUserMutation, useResetPasswordMutation, useSetNewPasswordMutation, useLogInAdminMutation, useGetAllUsersMutation } = userAuthApi
+export const { useRegisterUserMutation, useLoginUserMutation, useResetPasswordMutation, useSetNewPasswordMutation, useLogInAdminMutation, useGetAllAlertsQuery } = userAuthApi

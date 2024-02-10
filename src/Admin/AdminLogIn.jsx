@@ -1,9 +1,11 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useLogInAdminMutation } from '../services/userAuthApi'; 
 
 function AdminLogIn() {
     const navigate = useNavigate()
-    const handleSubmit = (e) => {
+    const [loginAdmin] = useLogInAdminMutation();
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const logInData = {
@@ -11,9 +13,14 @@ function AdminLogIn() {
             pass: formData.get('pass'),
         }
         if(logInData.email.length > 0){
-            navigate('/admin/dashboard')
+            const res = await loginAdmin(logInData);
+            if(res.data.status){
+                navigate('/admin/dashboard')
+            }else{
+                window.alert('Fail to login');
+            }
+            
         }
-        console.log(logInData);
     }
 
   return (
