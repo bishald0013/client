@@ -14,6 +14,7 @@ function AdminLogIn() {
         }
         if(logInData.email.length > 0){
             const res = await loginAdmin(logInData);
+            console.log(res);
             if(res.data.status){
                 navigate('/admin/dashboard')
             }else{
