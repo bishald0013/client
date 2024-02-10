@@ -1,23 +1,26 @@
 import React from 'react';
-// import { format } from 'date-fns';
+import { format } from 'date-fns';
 
-const DisplayAllUser = ({alertData}) => {
-    console.log(alertData);
+const DisplayAllUser = ({ alertData }) => {
+    if (!alertData || !Array.isArray(alertData) || alertData.length === 0) {
+        return <div>No data available</div>;
+    }
+
     return (
         <div>
-            <table class="table table-success table-striped">
+            <table className="table table-success table-striped">
                 <thead>
                     <tr>
-                    <th className='text-center'>User Name</th>
-                    <th className='text-center'>Reminder Date</th>
-                    <th className='text-center'>Reminder Status</th>
-                    <th className='text-center'>Reminder Type</th>
-                    <th className='text-center'>Vehicle Number</th>
-                    <th className='text-center'>Send Reminder</th>
+                        <th className='text-center'>User Name</th>
+                        <th className='text-center'>Reminder Date</th>
+                        <th className='text-center'>Reminder Status</th>
+                        <th className='text-center'>Reminder Type</th>
+                        <th className='text-center'>Vehicle Number</th>
+                        <th className='text-center'>Send Reminder</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* {alertData.map((data, index) => (
+                    {alertData.map((data, index) => (
                         <tr key={index}>
                             <td className='text-center'>{data.a_created_by}</td>
                             <td className='text-center'>{format(new Date(data.a_end_date), 'yyyy-MM-dd HH:mm:ss')}</td>
@@ -30,8 +33,7 @@ const DisplayAllUser = ({alertData}) => {
                                 </button>
                             </td>
                         </tr>
-                    ))} */}
-                    
+                    ))}
                 </tbody>
             </table>
         </div>
