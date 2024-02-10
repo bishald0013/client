@@ -1,10 +1,10 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
-import { useLogInAdminMutation } from '../services/userAuthApi'; 
+// import { useLogInAdminMutation } from '../services/userAuthApi'; 
 
 function AdminLogIn() {
     const navigate = useNavigate()
-    const [loginAdmin] = useLogInAdminMutation();
+    // const [loginAdmin] = useLogInAdminMutation();
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
