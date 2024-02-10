@@ -1,7 +1,8 @@
 import React from 'react';
-import { format } from 'date-fns';
+// import { format } from 'date-fns';
 
 const DisplayAllUser = ({alertData}) => {
+    console.log(alertData);
     return (
         <div>
             <table class="table table-success table-striped">
@@ -16,7 +17,7 @@ const DisplayAllUser = ({alertData}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {alertData.map((data, index) => (
+                    {/* {alertData.map((data, index) => (
                         <tr key={index}>
                             <td className='text-center'>{data.a_created_by}</td>
                             <td className='text-center'>{format(new Date(data.a_end_date), 'yyyy-MM-dd HH:mm:ss')}</td>
@@ -29,7 +30,7 @@ const DisplayAllUser = ({alertData}) => {
                                 </button>
                             </td>
                         </tr>
-                    ))}
+                    ))} */}
                     
                 </tbody>
             </table>
