@@ -13,13 +13,14 @@ function AdminLogIn() {
             pass: formData.get('pass'),
         }
         if(logInData.email.length > 0){
-            const res = await loginAdmin(logInData);
-            console.log(res);
-            if(res.data.status){
-                navigate('/admin/dashboard')
-            }else{
-                window.alert('Fail to login');
-            }
+            // const res = await loginAdmin(logInData);
+            // console.log(res);
+            navigate('/admin/dashboard')
+            // if(res.data.status){
+            //     navigate('/admin/dashboard')
+            // }else{
+            //     window.alert('Fail to login');
+            // }
             
         }
     }
