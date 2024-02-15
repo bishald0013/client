@@ -12,7 +12,7 @@ function AdminLogIn() {
             email: formData.get('email'),
             pass: formData.get('pass'),
         }
-        if(logInData.email.length > 0 && logInData.email === 'hirakmittu@gmail' && logInData.pass === 'mI28hir179@word%ad9076'){
+        if(logInData.email.length > 0 && logInData.email === 'hirakmittu@gmail.com' && logInData.pass === 'mI28hir179@word%ad9076'){
             // const res = await loginAdmin(logInData);
             // console.log(res);
             navigate('/admin/dashboard')
