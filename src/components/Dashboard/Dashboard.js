@@ -63,10 +63,18 @@ function Dashboard() {
             <Alert allAlert={allAlerts} />
           </div>
         </div>
-
             <form className='col-lg-6 my-5' onSubmit={handleSubmit}>
+            <span className='me-3 my-3'>Create Alert</span>
+            <div className="col w-25">
+                <DatePicker
+                  selected={selectedDate}
+                  onChange={(date) => setSelectedDate(date)}
+                  dateFormat="dd/MM/yyyy"
+                  className='form-control'
+                  placeholderText="Select Reminder Date"
+                />
+            </div>
               <div className=''>
-                  <span className='me-3'>Create Alert</span>
                   <div className='alert_form my-4'>
                     <div className="col  my-3">
                         <input type="text" className="form-control" placeholder="Alert name" name='alertName' aria-label="Alert name" />
@@ -86,7 +94,7 @@ function Dashboard() {
                       </select>
                     </div>
                     
-                    <div className="col  my-3">
+                    {/* <div className="col  my-3">
                       <DatePicker
                         selected={selectedDate}
                         onChange={(date) => setSelectedDate(date)}
@@ -94,7 +102,7 @@ function Dashboard() {
                         className='form-control'
                         placeholderText="Select Reminder Date"
                       />
-                    </div>
+                    </div> */}
                   </div>
                   <button type="submit" className="btn btn-primary">Create Alert</button>
               </div>
