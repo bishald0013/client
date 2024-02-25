@@ -1,9 +1,21 @@
 import React from 'react';
 import { format } from 'date-fns';
+import { useSendAlertsMutation } from '../services/alertAuthApi';
 
 const DisplayAllUser = ({ alertData }) => {
+    console.log(alertData)
+    const [sendAlerts] = useSendAlertsMutation()
     if (!alertData || !Array.isArray(alertData) || alertData.length === 0) {
         return <div>No data available</div>;
+    }
+
+    const sendAlert = async(userData) => {
+        const res = await sendAlerts({userData});
+        if(res.data.status === true){
+            alert(res.data.message)
+        }else{
+            alert(res.data.message)
+        }
     }
 
     return (
@@ -28,7 +40,7 @@ const DisplayAllUser = ({ alertData }) => {
                             <td className='text-center'>{data.a_type}</td>
                             <td className='text-center'>{data.a_v_number}</td>
                             <td className='text-center'>
-                                <button className='btn btn-primary'>
+                                <button className='btn btn-primary' onClick={() => sendAlert(data._id)}>
                                     Send
                                 </button>
                             </td>

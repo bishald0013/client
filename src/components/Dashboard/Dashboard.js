@@ -95,20 +95,6 @@ function Dashboard() {
                         placeholderText="Select Reminder Date"
                       />
                     </div>
-                    {/* <div className="col my-3">
-                      <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="smsCheckbox" name="smsReminder" />
-                        <label className="form-check-label" htmlFor="smsCheckbox">
-                          Remind me via SMS
-                        </label>
-                      </div>
-                      <div className="form-check">
-                        <input className="form-check-input" type="checkbox" value="" id="emailCheckbox" name="emailReminder" />
-                        <label className="form-check-label" htmlFor="emailCheckbox">
-                          Remind me via Email
-                        </label>
-                      </div>
-                    </div> */}
                   </div>
                   <button type="submit" className="btn btn-primary">Create Alert</button>
               </div>
