@@ -13,8 +13,10 @@ const DisplayAllUser = ({ alertData }) => {
         const res = await sendAlerts({userData});
         if(res.data.status === true){
             alert(res.data.message)
+            window.location.reload();
         }else{
             alert(res.data.message)
+            window.location.reload();
         }
     }
 
