@@ -3,7 +3,6 @@ import { format } from 'date-fns';
 import { useSendAlertsMutation } from '../services/alertAuthApi';
 
 const DisplayAllUser = ({ alertData }) => {
-    console.log(alertData)
     const [sendAlerts] = useSendAlertsMutation()
     if (!alertData || !Array.isArray(alertData) || alertData.length === 0) {
         return <div>No data available</div>;
@@ -26,6 +25,9 @@ const DisplayAllUser = ({ alertData }) => {
                 <thead>
                     <tr>
                         <th className='text-center'>User Name</th>
+                        <th className='text-center'>Phone Number</th>
+                        <th className='text-center'>Alt Phone Number</th>
+                        <th className='text-center'>Email</th>
                         <th className='text-center'>Reminder Date</th>
                         <th className='text-center'>Reminder Status</th>
                         <th className='text-center'>Reminder Type</th>
@@ -37,6 +39,9 @@ const DisplayAllUser = ({ alertData }) => {
                     {alertData.map((data, index) => (
                         <tr key={index}>
                             <td className='text-center'>{data.a_created_by}</td>
+                            <td className='text-center'>{data.userPhone}</td>
+                            <td className='text-center'>{data.userAltNumber}</td>
+                            <td className='text-center'>{data.userEmail}</td>
                             <td className='text-center'>{format(new Date(data.a_end_date), 'yyyy-MM-dd HH:mm:ss')}</td>
                             <td className='text-center'>{data.a_status}</td>
                             <td className='text-center'>{data.a_type}</td>
