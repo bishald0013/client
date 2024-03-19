@@ -6,23 +6,43 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar/Navbar';
 import Register from './pages/Register';
 import Dashboard from './components/Dashboard/Dashboard';
+import ResetPass from './components/ResetPassword/ResetPass';
 import { getToken } from './services/localStorage';
 
-function App() {
+import { useEffect, useState } from 'react';
+import NewPassword from './components/ResetPassword/NewPassword';
+import AdminLogIn from './Admin/AdminLogIn';
+import AdminDashboard from './Admin/AdminDashboard';
 
-  let token = getToken();
+function App() {
+  const [token, setToken] = useState(() => getToken()); // Initialize with the token from localStorage
   console.log(token);
+  useEffect(() => {
+    const newToken = getToken();
+    if (newToken) {
+      setToken(newToken);
+    }
+  }, []);
 
   return (
     <BrowserRouter>
       <GlobalStyle />
-      <Navbar/>
-      <Routes>        
-        <Route path='/' exact element={token ? <Navigate to='/dashboard' /> : <Home />} />
-        <Route path='/register' exact element={<Register/>} />
-        <Route path='/login' exact element={<Login/>} />
-        <Route path='/dashboard' element= {token ? <Dashboard/> : <Navigate to='/'/>} />
-        {/* <Route path='/dashboard' exact element={<Dashboard/>} /> */}
+      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={!token ? <Home /> : <Navigate to="/dashboard" />}
+        />
+        <Route path="/register" exact element={<Register />} />
+        <Route path="/login" exact element={<Login />} />
+        <Route path="/reset/password/" exact element={<ResetPass />} />
+        <Route path={'/new/password/:id?'} exact element={<NewPassword />} />
+        <Route path={'/admin/login'} exact element={<AdminLogIn/>} />
+        <Route path={'/admin/dashboard'} exact element={<AdminDashboard/>} />
+        <Route
+          path="/dashboard"
+          element= {<Dashboard /> } />
       </Routes>
     </BrowserRouter>
   );
