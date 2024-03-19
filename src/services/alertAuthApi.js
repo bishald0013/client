@@ -5,6 +5,7 @@ export const alertAuthApi = createApi({
 
     baseQuery: fetchBaseQuery({
         baseUrl: "https://fair-hen-bracelet.cyclic.app/api/alert",
+        // baseUrl: "http://localhost:5001/api/alert",
     }),
 
     endpoints: (builder) => ({
@@ -28,8 +29,20 @@ export const alertAuthApi = createApi({
                     "authorization": `Bearer ${token}`
                 }
             })
+        }), 
+
+        sendAlerts: builder.mutation({
+            query: (id) => ({
+                url: '/send/alert',
+                method: 'POST',
+                body: id,
+                headers: {
+                    'Accept': 'application/json',
+                    'content-type': 'application/json'
+                },
+            })
         })
     })
 })
 
-export const { useCreateAlertMutation, useGetAlertsQuery } = alertAuthApi
+export const { useCreateAlertMutation, useGetAlertsQuery, useSendAlertsMutation } = alertAuthApi
