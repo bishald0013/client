@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-
 import { FaTimes } from "react-icons/fa";
-import { CgMenuRight } from "react-icons/cg";
 import { IconContext } from "react-icons";
+import { CgMenuRight } from "react-icons/cg";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import {
   Nav,
@@ -18,6 +17,7 @@ import {
   NavLinkWrapper
 } from "./Style";
 import data from "../../data/NavbarData";
+import { getToken } from "../../services/localStorage";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -42,6 +42,12 @@ const Navbar = () => {
     setShow(false);
   };
 
+  const token = getToken();
+  const handleSignOut = () =>{
+    localStorage.removeItem('token');
+    navigate('/login');
+  }
+
   return (
     <IconContext.Provider value={{ color: "#fff" }}>
       <Nav>
@@ -63,18 +69,24 @@ const Navbar = () => {
               ))}
             </NavLinkWrapper>
             
-            <NavButtons show={show}>
-              <NavItem>
-                <NavLinks onClick={() => closeMobileMenu('/login', null)}>
-                  Login
-                </NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks btn='true' onClick={() => closeMobileMenu('/register', null)}>
-                  Sign Up Free
-                </NavLinks>
-              </NavItem>
-            </NavButtons>
+            {!token ? 
+             ( <>
+                <NavButtons show={show}>
+                  <NavItem>
+                    <NavLinks onClick={() => closeMobileMenu('/login', null)}>
+                      Login
+                    </NavLinks>
+                  </NavItem>
+                  <NavItem>
+                    <NavLinks btn='true' onClick={() => closeMobileMenu('/register', null)}>
+                      Sign Up Free
+                    </NavLinks>
+                  </NavItem>
+                </NavButtons>
+              </>) : 
+              (<>
+                <button type="button" className="btn btn-primary btn-sm me-3" onClick={handleSignOut}>Sign out</button>
+              </>)}
           </NavMenu>
         </NavbarContainer>
       </Nav>
