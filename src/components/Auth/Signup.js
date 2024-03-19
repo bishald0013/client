@@ -123,6 +123,7 @@ const Signup = () => {
             value={credentials.zip}
           />
         </div>
+        {/* Password */}
         <div className="input-field">
           <i className="fas fa-lock"></i>
           <input
@@ -148,6 +149,8 @@ const Signup = () => {
             )}
           </span>
         </div>
+        {/* Confirm Password */}
+
         <div className="input-field">
           <i className="fas fa-key"></i>
           <input
