@@ -8,7 +8,7 @@ import { useGetAlertsQuery } from '../../services/alertAuthApi';
 
 function Dashboard() {
 
-  const alertType = ['Driving Licence', 'Fitness Expiry', 'RC Expiry', 'Pucc expiry Reminder']
+  const alertType = ['Driving Licence Expiry', 'Fitness Expiry', 'RC Expiry', 'Pollution Certificate Expiry', 'Permit Expiry','Insurance Expiry']
   const [selectedDate, setSelectedDate] = useState(null)
   const [alertData, setAlertData] = useState(null)
   const [createAlert] = useCreateAlertMutation()
@@ -55,65 +55,55 @@ function Dashboard() {
 
   return (
     <>
+    <div className="alert alert-danger fixed-top" style={{ marginTop: '5rem' }} role="alert">
+      <span className=''> Note :- Create a alert with required details and relyNess will notified you on the selected Reminder Date via SMS an Email  
+      </span>
+    </div>
      <div className='main_container'>
-        <div className='row my-5'>
-        <div className='col-lg-6 my-5'>
-          <span className='me-3'>Your Alerts</span>
-          <div className="row row-cols-1 row-cols-lg-2">
-            <Alert allAlert={allAlerts} />
-          </div>
-        </div>
-            <form className='col-lg-6 my-5' onSubmit={handleSubmit}>
-            <span className='me-3 my-3'>Create Alert</span>
-            <div className="col w-25">
-                <DatePicker
-                  selected={selectedDate}
-                  onChange={(date) => setSelectedDate(date)}
-                  dateFormat="dd/MM/yyyy"
-                  className='form-control'
-                  placeholderText="Select Reminder Date"
-                />
-            </div>
-              <div className=''>
-                  <div className='alert_form my-4'>
-                    <div className="col  my-3">
-                        <input type="text" className="form-control" placeholder="Alert name" name='alertName' aria-label="Alert name" />
-                    </div>
-                    <div className="col  my-3">
-                        <input type="text" className="form-control" placeholder="Vehicle number" name='vehicleNumber' aria-label="Vehicle name" />
-                    </div>
-                    <div className="col  my-3">
-                      <select id="" name='alertType' className="form-select">
-                      {
-                          alertType.map((item, index) => {
-                            return (
-                              <option name='alertType' key={index}>{item}</option>
-                            )
-                          })
-                        }
-                      </select>
-                    </div>
-                    
-                    {/* <div className="col  my-3">
-                      <DatePicker
-                        selected={selectedDate}
-                        onChange={(date) => setSelectedDate(date)}
-                        dateFormat="dd/MM/yyyy"
-                        className='form-control'
-                        placeholderText="Select Reminder Date"
-                      />
-                    </div> */}
-                  </div>
-                  <button type="submit" className="btn btn-primary">Create Alert</button>
+        <div className='row my-5 pt-5'>
+            <div className='col-lg-6 my-5'>
+              <span className='me-3'>Your Alerts</span>
+              <div className="row row-cols-1 row-cols-lg-2">
+                <Alert allAlert={allAlerts} />
               </div>
-            </form>
+            </div>
+            <div className='col-lg-6 my-5'>
+              <form className='' onSubmit={handleSubmit}>
+                <span className='my-3'>Create Alert</span>
+                    <div className='alert_form my-4'>
+                      <div className="">
+                        <DatePicker
+                          selected={selectedDate}
+                          onChange={(date) => setSelectedDate(date)}
+                          dateFormat="dd/MM/yyyy"
+                          className='form-control w-100'
+                          placeholderText="Select Reminder Date"
+                        />
+                      </div>
+                      <div className="my-3">
+                          <input type="text" className="form-control" placeholder="Alert name" name='alertName' aria-label="Alert name" />
+                      </div>
+                      <div className="my-3">
+                          <input type="text" className="form-control" placeholder="Vehicle number" name='vehicleNumber' aria-label="Vehicle name" />
+                      </div>
+                      <div className="my-3">
+                        <select id="" name='alertType' className="form-select">
+                        {
+                            alertType.map((item, index) => {
+                              return (
+                                <option name='alertType' key={index}>{item}</option>
+                              )
+                            })
+                          }
+                        </select>
+                      </div>
+                    </div>
+                    <button type="submit" className="btn btn-primary">Create Alert</button>
+              </form>
+            </div>
         </div>
-        
      </div>
-      <div className="alert alert-danger" role="alert">
-          <span className=''> Note :- Create a alert with required details and relyNess will notified you on the selected Reminder Date via SMS an Email  
-          </span>
-      </div>
+      
     </>
   )
 }
