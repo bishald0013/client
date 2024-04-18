@@ -74,11 +74,17 @@ function Dashboard() {
         <div className="row my-2">
           <div className="col-lg-6 my-5 px-5">
             <span className="">Your Alerts</span>
-            <div className="row row-cols-1 row-cols-lg-2">
+            <div className="d-flex flex-wrap justify-content-between">
               <Alert allAlert={allAlerts} />
             </div>
           </div>
-          <form className="col-lg-6 jumbotron" onSubmit={handleSubmit}>
+          <form
+            className="col-lg-6 jumbotron"
+            onSubmit={handleSubmit}
+            style={{
+              maxHeight: "90vh",
+            }}
+          >
             <h3 className="mb-3 bg bg-primary w-100 text-center p-2 text-light">
               Create Alert
             </h3>
