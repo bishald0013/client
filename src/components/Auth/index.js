@@ -27,7 +27,7 @@ const Auth = (props) => {
             <div className="content">
               <h3>New here ?</h3>
               <p>
-                If you don't have an account then you have to first create to
+                If you don't have an account then you have to create first to
                 login
               </p>
               <button
