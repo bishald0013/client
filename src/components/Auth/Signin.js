@@ -6,21 +6,26 @@ const Signin = () => {
   const navigate = useNavigate();
   const [loginUser] = useLoginUserMutation();
   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const loginData = new FormData(event.currentTarget);
-    const logInData = {
-      email: loginData.get("email"),
-      password: loginData.get("password"),
-    };
+    try {
+      event.preventDefault();
+      const loginData = new FormData(event.currentTarget);
+      const logInData = {
+        email: loginData.get("email"),
+        password: loginData.get("password"),
+      };
 
-    if (!logInData.email) throw new Error("Email is required");
-    if (!logInData.password) throw new Error("Password is required");
+      if (!logInData.email) throw new Error("Email is required");
+      if (!logInData.password) throw new Error("Password is required");
 
-    const response = await loginUser(logInData);
-    if (response.data.status === false)
-      throw new Error("Fail to login please try again");
-    localStorage.setItem("token", response.data.token);
-    navigate("/dashboard");
+      const response = await loginUser(logInData);
+      if (response.data.status === false)
+        throw new Error("Fail to login please try again");
+      localStorage.setItem("token", response.data.token);
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+      alert(error?.message || "An error occured");
+    }
   };
 
   const resetPassword = async (event) => {
