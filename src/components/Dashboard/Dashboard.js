@@ -50,7 +50,7 @@ function Dashboard() {
       setAlertData(alertData);
 
       const response = await createAlert({ alertData, token });
-      if (response.data?.setAlert.status === true) {
+      if (response.data.setAlert.status === true) {
         alert("Alert Created Successfully");
         window.location.reload();
       } else {
