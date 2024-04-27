@@ -133,6 +133,6 @@ export const Button = styled.button`
 	position: relative;
 `;
 
-export const Card = styled.div``;
+// export const Card = styled.div``;
 
 export default GlobalStyle;

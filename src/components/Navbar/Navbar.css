@@ -1,0 +1,17 @@
+.nav-bg-colour {
+    background-color: #d4f5bb;
+}
+
+.sign_out_btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color:#527d31;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 2rem;
+    width: 10rem;
+    transition: background-color 0.3s ease;
+}

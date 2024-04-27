@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './Navbar.css'
 import { FaTimes } from "react-icons/fa";
 import { IconContext } from "react-icons";
 import { CgMenuRight } from "react-icons/cg";
@@ -85,7 +86,7 @@ const Navbar = () => {
                 </NavButtons>
               </>) : 
               (<>
-                <button type="button" className="btn btn-primary btn-sm me-3" onClick={handleSignOut}>Sign out</button>
+                <button type="button" className="sign_out_btn text-light me-5" onClick={handleSignOut}>Sign out</button>
               </>)}
           </NavMenu>
         </NavbarContainer>
