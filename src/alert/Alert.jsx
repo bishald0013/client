@@ -20,7 +20,7 @@ const Alert = ({ allAlert }) => {
               <tr key={a_data._id}>
                 <td>{a_data.a_name}</td>
                 <td>{a_data.a_type}</td>
-                <td>{new Date(a_data.a_end_date).toLocaleDateString()}</td>
+                <td>{a_data.a_end_date}</td>
                 <td>{a_data.a_v_number}</td>
                 <td>{a_data.a_status}</td>
                 <td><button className="btn btn-danger" disabled>Delete</button></td>
