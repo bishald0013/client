@@ -85,7 +85,7 @@ const Navbar = () => {
                 </NavButtons>
               </>) : 
               (<>
-                <button type="button" className="btn btn-primary btn-sm me-3" onClick={handleSignOut}>Sign out</button>
+                <button type="button" className="btn btn-outline-success btn-lg my-2 me-3" onClick={handleSignOut}>Sign out</button>
               </>)}
           </NavMenu>
         </NavbarContainer>

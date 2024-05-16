@@ -176,7 +176,7 @@ const Signup = () => {
             )}
           </span>
         </div>
-        <input type="submit" value="Signup" className="btn solid" />
+        <input type="submit" value="Signup" className="btn btn-outline-success w-50 btn-lg my-3" />
       </form>
     </>
   );

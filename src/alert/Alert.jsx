@@ -4,28 +4,30 @@ const Alert = ({ allAlert }) => {
   return (
     <>
       {allAlert && allAlert.data && allAlert.data.length > 0 ? (
-        allAlert.data.map((a_data) => (
-          <div
-            className="card_cont my-3"
-            key={a_data._id}
-            style={{
-              width: "100%",
-            }}
-          >
-            <div className="card text-bg-light mb-3">
-              <div className="card-header">Name: {a_data.a_name}</div>
-              <div className="card-body">
-                <h5 className="card-title">Type: {a_data.a_type}</h5>
-                <p className="card-text">
-                  Reminder date:{" "}
-                  {new Date(a_data.a_end_date).toLocaleDateString()}
-                </p>
-                <p className="card-text">Vehicle number: {a_data.a_v_number}</p>
-                <span>Status: {a_data.a_status}</span>
-              </div>
-            </div>
-          </div>
-        ))
+        <table className="table table-secondary table-striped rounded shadow-sm">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Alert Type</th>
+              <th>Reminder Date</th>
+              <th>Vehicle Number</th>
+              <th>Status</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allAlert.data.map((a_data) => (
+              <tr key={a_data._id}>
+                <td>{a_data.a_name}</td>
+                <td>{a_data.a_type}</td>
+                <td>{new Date(a_data.a_end_date).toLocaleDateString()}</td>
+                <td>{a_data.a_v_number}</td>
+                <td>{a_data.a_status}</td>
+                <td><button className="btn btn-danger" disabled>Delete</button></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       ) : (
         <p>No data available</p>
       )}

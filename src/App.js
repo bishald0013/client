@@ -42,7 +42,7 @@ function App() {
         <Route path={"/admin/dashboard"} exact element={<AdminDashboard />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 }
