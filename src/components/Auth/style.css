@@ -120,7 +120,7 @@ form.signin-form {
   border-color: #d4f5bb;
 }
 
-.btn {
+/* .btn {
   width: 150px;
   background-color: #5995fd;
   border: none;
@@ -133,10 +133,10 @@ form.signin-form {
   margin: 10px 0;
   cursor: pointer;
   transition: 0.5s;
-}
+} */
 
 .btn:hover {
-  background-color: #4d84e2;
+  background-color: #0e9f24;
 }
 
 .panels-container {

@@ -2,9 +2,37 @@
   /* margin-left: 3rem; */
   margin-top: 5rem;
 }
+
+.alert-bg-colour{
+  background-color: #d4edda;
+}
+
 .jumbotron {
   background-color: #f8f9fa;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header-colour {
+  background-color: #527d31;
+}
+
+.custom_button {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color:#527d31;
+    color: #212529;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 2rem;
+    width: 29.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.custom_button:hover {
+  background-color: #d4f5bb;
 }
