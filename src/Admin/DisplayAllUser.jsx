@@ -1,5 +1,4 @@
 import React from 'react';
-import { format } from 'date-fns';
 import { useSendAlertsMutation } from '../services/alertAuthApi';
 
 const DisplayAllUser = ({ alertData }) => {
