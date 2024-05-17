@@ -42,7 +42,7 @@ const DisplayAllUser = ({ alertData }) => {
                             <td className='text-center'>{data.userPhone}</td>
                             <td className='text-center'>{data.userAltNumber}</td>
                             <td className='text-center'>{data.userEmail}</td>
-                            <td className='text-center'>{format(new Date(data.a_end_date), 'yyyy-MM-dd HH:mm:ss')}</td>
+                            <td className='text-center'>{data.a_end_date}</td>
                             <td className='text-center'>{data.a_status}</td>
                             <td className='text-center'>{data.a_type}</td>
                             <td className='text-center'>{data.a_v_number}</td>
