@@ -4,7 +4,29 @@
 }
 
 .dateTimeInput{
-  width: 25.4rem;
+  width: 25.3rem;
+}
+
+.dateTimeInputWrapper {
+  position: relative;
+}
+
+/* Style the calendar dropdown */
+.react-datepicker {
+  position: absolute;
+  z-index: 9999; /* Ensure it appears on top of other elements */
+}
+
+/* Adjust the position of the calendar dropdown for small screens */
+@media (max-width: 576px) {
+  .react-datepicker {
+      top: calc(100% + 10px); /* Adjust as needed */
+      left: 50%; /* Position it horizontally centered */
+      transform: translateX(-50%); /* Center it horizontally */
+  }
+  .dateTimeInput{
+    width: 20rem;
+  }
 }
 
 .alert-bg-colour{

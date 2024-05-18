@@ -112,13 +112,13 @@ function Dashboard() {
                                 onChange={(e) => setVehicleNumber(e.target.value)}
                                 />
                             </div>
-                            <div className="mb-3">
-                              <DatePicker
-                                  className="form-control dateTimeInput"
-                                  placeholderText="Reminder Date"
-                                  selected={reminderDate}
-                                  onChange={(date) => setReminderDate(date)}
-                                  dateFormat="MM/dd/yyyy"
+                            <div className="mb-3 dateTimeInputWrapper">
+                                <DatePicker
+                                    className="form-control dateTimeInput"
+                                    placeholderText="Reminder Date"
+                                    selected={reminderDate}
+                                    onChange={(date) => setReminderDate(date)}
+                                    dateFormat="MM/dd/yyyy"
                                 />
                             </div>
                             <div className="d-grid gap-2">
