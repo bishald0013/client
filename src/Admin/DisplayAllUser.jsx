@@ -20,7 +20,7 @@ const DisplayAllUser = ({ alertData }) => {
 
     return (
         <div>
-            <table className="table table-success table-striped">
+            <table className="table table-secondary table-striped">
                 <thead>
                     <tr>
                         <th className='text-center'>User Name</th>

@@ -3,6 +3,10 @@
   margin-top: 5rem;
 }
 
+.dateTimeInput{
+  width: 25.4rem;
+}
+
 .alert-bg-colour{
   background-color: #d4edda;
 }

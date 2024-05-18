@@ -1,13 +1,14 @@
 import React from 'react'
-import DisplayAllUser from './DisplayAllUser'
-import {useGetAllAlertsQuery } from '../services/userAuthApi'; 
+import MyTabs from './MyTabs';
 
 function AdminDashboard() {
-  const {data} = useGetAllAlertsQuery();
   return (
     <div className='my-5'>
       <div className="admin-table pt-5">
-        <DisplayAllUser alertData={data}/>
+        <div className="container mx-auto my-3">
+          <MyTabs/>
+        </div>
+          {/* <DisplayAllUser alertData={data}/> */}
       </div>
     </div>
   )

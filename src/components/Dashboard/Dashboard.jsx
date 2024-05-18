@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./Dashboard.css";
+import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import Alert from "../../alert/Alert";
 import { useCreateAlertMutation } from "../../services/alertAuthApi";
@@ -112,12 +113,12 @@ function Dashboard() {
                                 />
                             </div>
                             <div className="mb-3">
-                                <input
-                                type="date"
-                                className="form-control"
-                                placeholder="Reminder Date"
-                                value={reminderDate}
-                                onChange={(e) => setReminderDate(e.target.value)}
+                              <DatePicker
+                                  className="form-control dateTimeInput"
+                                  placeholderText="Reminder Date"
+                                  selected={reminderDate}
+                                  onChange={(date) => setReminderDate(date)}
+                                  dateFormat="MM/dd/yyyy"
                                 />
                             </div>
                             <div className="d-grid gap-2">
