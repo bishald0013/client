@@ -22,6 +22,7 @@ function Dashboard() {
   const [vehicleNumber, setVehicleNumber] = useState("");
   const [reminderDate, setReminderDate] = useState("");
   const [alertType, setAlertType] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const [allAlerts, setAllAlerts] = useState({});
   const [createAlert] = useCreateAlertMutation();
@@ -39,7 +40,7 @@ function Dashboard() {
     if (!token) {
       navigate("/");
     }
-  }, []);
+  }, [navigate, token]);
   const handleSaveAlert = async () => {
     if (!alertName || !vehicleNumber || !reminderDate || !selectedAlertType) {
       toast.error("Please fill in all fields");
@@ -54,6 +55,7 @@ function Dashboard() {
       alertDate: formattedReminderDate,
       alertType,
     };
+    setLoading(true);
     const response = await createAlert({ alertData, token });
     console.log(response);
     if (response?.data?.setAlert?.status === true) {
@@ -62,6 +64,7 @@ function Dashboard() {
     } else {
       toast.error("Fail to create Alert. Please try again");
     }
+    setLoading(false);
   };
 
   return (
@@ -127,14 +130,23 @@ function Dashboard() {
                       wrapperClassName="dateTimeInputWrapper"
                     />
                   </div>
-                  <div className="d-grid gap-2">
-                    <button
-                      className="btn btn-outline-success btn-lg"
-                      onClick={handleSaveAlert}
+                  {loading ? (
+                    <div
+                      className="btn btn-outline-success"
+                      style={{ width: "100%" }}
                     >
-                      Save Alert
-                    </button>
-                  </div>
+                      <div className="spinner-border" role="status"></div>
+                    </div>
+                  ) : (
+                    <div className="d-grid gap-2">
+                      <button
+                        className="btn btn-outline-success btn-lg"
+                        onClick={handleSaveAlert}
+                      >
+                        Save Alert
+                      </button>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

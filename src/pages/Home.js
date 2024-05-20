@@ -11,7 +11,7 @@ const Home = () => {
     if (token) {
       navigate("/dashboard");
     }
-  });
+  }, [navigate, token]);
   return (
     <Container>
       <Hero />

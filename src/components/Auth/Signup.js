@@ -18,12 +18,6 @@ const Signup = () => {
     confirmPassword: "",
   });
 
-  const [error, serError] = useState({
-    status: false,
-    message: "",
-    type: "",
-  });
-
   const navigate = useNavigate();
   const [registerUser] = useRegisterUserMutation();
 
@@ -56,11 +50,6 @@ const Signup = () => {
       navigate("/dashboard");
     } else {
       toast.error(response.data.message || "Some error occured");
-      serError({
-        status: true,
-        message: response.data.message,
-        type: response.data.type,
-      });
     }
     setLoading(false);
   };
