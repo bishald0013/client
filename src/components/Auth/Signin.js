@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../services/userAuthApi";
+import { toast } from "react-toastify";
 const Signin = () => {
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const [loginUser] = useLoginUserMutation();
 
-
   const handleSubmit = async (event) => {
+    setLoading(true);
     try {
       event.preventDefault();
       const loginData = new FormData(event.currentTarget);
@@ -22,20 +23,21 @@ const Signin = () => {
 
       const response = await loginUser(logInData);
       setLoading(true);
-      if(response.data.status === true){
+      if (response.data.status === true) {
         setLoading(false);
         localStorage.setItem("token", response.data.token);
         navigate("/dashboard");
-      }else{
+      } else {
         setLoading(false);
-        const msg = response.data.message
-        alert(msg);
+        const msg = response.data.message;
+        toast.error(msg);
       }
       setLoading(false);
     } catch (error) {
       console.log(error);
-      alert(error?.message || "An error occured");
+      toast.error(error?.message || "An error occured");
     }
+    setLoading(false);
   };
 
   const resetPassword = async (event) => {
@@ -46,21 +48,9 @@ const Signin = () => {
     setShowPassword((prevState) => !prevState);
   };
 
-  
-
   return (
     <>
       <form className="signin-form" onSubmit={handleSubmit}>
-        {loading === true ? (
-          <div className="d-flex justify-content-center my-5">
-            <div className="spinner-border" role="status">
-            </div>
-            <span className="mx-3 mt-2 fw-bold fs-5">Loading...</span>
-          </div>
-        ) : (
-          <></>
-        )}
-        
         <h2 className="title">Sign In</h2>
         <div className="input-field">
           <i className="fas fa-user"></i>
@@ -91,9 +81,23 @@ const Signin = () => {
           </span>
         </div>
         <div class="d-grid gap-2 d-md-block">
-          <button type="submit" className="btn btn-outline-success btn-lg me-3 my-3">
-            Sign in
-          </button>
+          {loading ? (
+            <div
+              className="btn btn-outline-success me-3 my-3 "
+              style={{ width: "7rem" }}
+            >
+              <div className="spinner-border" role="status">
+                <span className="sr-only">Signing in...</span>
+              </div>
+            </div>
+          ) : (
+            <button
+              type="submit"
+              className="btn btn-outline-success btn-lg me-3 my-3 "
+            >
+              Signin
+            </button>
+          )}
           <button
             className="btn btn-outline-success btn-lg"
             onClick={resetPassword}

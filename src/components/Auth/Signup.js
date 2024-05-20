@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRegisterUserMutation } from "../../services/userAuthApi";
+import { toast } from "react-toastify";
 
 const Signup = () => {
+  const [loading, setLoading] = useState(false);
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfPassword, setShowConfPassword] = useState(false);
   const [credentials, setCredentials] = useState({
@@ -13,12 +16,6 @@ const Signup = () => {
     zip: "",
     password: "",
     confirmPassword: "",
-  });
-
-  const [error, serError] = useState({
-    status: false,
-    message: "",
-    type: "",
   });
 
   const navigate = useNavigate();
@@ -35,13 +32,15 @@ const Signup = () => {
     event.preventDefault();
 
     if (credentials.phoneNumber === credentials.alternateNumber) {
-      alert("Alternate number cannot be same as phone number");
+      toast.error("Alternate number cannot be same as phone number");
       return;
     }
     if (credentials.password !== credentials.confirmPassword) {
-      alert("Password should be same as confirm password");
+      toast.error("Password should be same as confirm password");
       return;
     }
+
+    setLoading(true);
 
     const response = await registerUser(credentials);
 
@@ -50,12 +49,9 @@ const Signup = () => {
       localStorage.setItem("token", response.data.token);
       navigate("/dashboard");
     } else {
-      serError({
-        status: true,
-        message: response.data.message,
-        type: response.data.type,
-      });
+      toast.error(response.data.message || "Some error occured");
     }
+    setLoading(false);
   };
 
   const togglePasswordVisibility = () => {
@@ -67,10 +63,6 @@ const Signup = () => {
 
   return (
     <>
-      {error.status && (
-        <div className="alert alert-danger">{error.message}</div>
-      )}
-
       <form className="signup-form" onSubmit={handleSubmit}>
         <h2 className="title">Sign Up</h2>
         <div className="input-field">
@@ -176,7 +168,22 @@ const Signup = () => {
             )}
           </span>
         </div>
-        <input type="submit" value="Signup" className="btn btn-outline-success w-50 btn-lg my-3" />
+        {loading ? (
+          <div
+            className="btn btn-outline-success me-3 my-3 "
+            style={{ width: "7rem" }}
+          >
+            <div className="spinner-border" role="status">
+              <span className="sr-only">Signing in...</span>
+            </div>
+          </div>
+        ) : (
+          <input
+            type="submit"
+            value="Signup"
+            className="btn btn-outline-success w-50 btn-lg my-3"
+          />
+        )}
       </form>
     </>
   );

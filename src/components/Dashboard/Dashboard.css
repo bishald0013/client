@@ -3,12 +3,12 @@
   margin-top: 5rem;
 }
 
-.dateTimeInput{
-  width: 25.3rem;
+.dateTimeInput {
 }
 
 .dateTimeInputWrapper {
   position: relative;
+  width: 100% !important;
 }
 
 /* Style the calendar dropdown */
@@ -20,16 +20,13 @@
 /* Adjust the position of the calendar dropdown for small screens */
 @media (max-width: 576px) {
   .react-datepicker {
-      top: calc(100% + 10px); /* Adjust as needed */
-      left: 50%; /* Position it horizontally centered */
-      transform: translateX(-50%); /* Center it horizontally */
-  }
-  .dateTimeInput{
-    width: 20rem;
+    top: calc(100% + 10px); /* Adjust as needed */
+    left: 50%; /* Position it horizontally centered */
+    transform: translateX(-50%); /* Center it horizontally */
   }
 }
 
-.alert-bg-colour{
+.alert-bg-colour {
   background-color: #d4edda;
 }
 
@@ -45,18 +42,18 @@
 }
 
 .custom_button {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    background-color:#527d31;
-    color: #212529;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    margin-top: 2rem;
-    width: 29.5rem;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #527d31;
+  color: #212529;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  margin-top: 2rem;
+  width: 29.5rem;
+  transition: background-color 0.3s ease;
 }
 
 .custom_button:hover {
