@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
 // import AdminDashboard from "./Admin/AdminDashboard";
 // import Auth from "./components/Auth";
 import Maintainence from "./Maintainence/Maintainence";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const [token, setToken] = useState(() => getToken()); // Initialize with the token from localStorage
@@ -51,6 +52,7 @@ function App() {
         <Route path={"/admin/dashboard"} exact element={<AdminDashboard />} />
         <Route path="/dashboard" element={<Dashboard />} /> */}
       </Routes>
+        <Footer/>
     </BrowserRouter>
   );
 }
