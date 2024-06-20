@@ -10,7 +10,6 @@ import { getToken } from "./services/localStorage";
 import AdminDashboard from "./Admin/AdminDashboard";
 import Dashboard from "./components/Dashboard/Dashboard";
 import ResetPass from "./components/ResetPassword/ResetPass";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NewPassword from "./components/ResetPassword/NewPassword";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
