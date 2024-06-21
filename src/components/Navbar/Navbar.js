@@ -15,9 +15,11 @@ import {
   NavLogo,
   NavButtons,
   NavLinkWrapper,
+  NavLogoImg,
 } from "./Style";
 import data from "../../data/NavbarData";
 import { getToken } from "../../services/localStorage";
+import logo from "../../assets/png/logo.png";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -53,7 +55,7 @@ const Navbar = () => {
       <Nav>
         <NavbarContainer>
           <NavLogo to="/">
-            <NavIcon iconColor={show ? "#fff" : "#1A5D1A"} />
+            <NavLogoImg src={logo} alt="logo" />
           </NavLogo>
           <MobileIcon onClick={handleClick}>
             {show ? <FaTimes /> : <CgMenuRight color="#1A5D1A" />}
