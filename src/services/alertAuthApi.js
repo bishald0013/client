@@ -7,6 +7,10 @@ export const alertAuthApi = createApi({
     baseUrl: "https://server-side-v65f.onrender.com/api/alert",
     // baseUrl: "http://localhost:5001/api/alert",
   }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://apis.relynrelax.com/api/alert",
+    // baseUrl: "http://localhost:5001/api/alert",
+  }),
 
   endpoints: (builder) => ({
     createAlert: builder.mutation({
