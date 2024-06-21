@@ -14,7 +14,7 @@ import {
   NavItem,
   NavLogo,
   NavButtons,
-  NavLinkWrapper
+  NavLinkWrapper,
 } from "./Style";
 import data from "../../data/NavbarData";
 import { getToken } from "../../services/localStorage";
@@ -31,7 +31,7 @@ const Navbar = () => {
 
   const scrollTo = (id) => {
     const element = document.getElementById(id);
-    if(element) 
+    if (element)
       element.scrollIntoView({
         behavior: "smooth",
       });
@@ -43,20 +43,20 @@ const Navbar = () => {
   };
 
   const token = getToken();
-  const handleSignOut = () =>{
-    localStorage.removeItem('token');
-    navigate('/login');
-  }
+  const handleSignOut = () => {
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
 
   return (
     <IconContext.Provider value={{ color: "#fff" }}>
       <Nav>
         <NavbarContainer>
-          <NavLogo to='/'>
-            <NavIcon iconColor={show ? '#fff' :'#1A5D1A'}/>
+          <NavLogo to="/">
+            <NavIcon iconColor={show ? "#fff" : "#1A5D1A"} />
           </NavLogo>
           <MobileIcon onClick={handleClick}>
-            {show ? <FaTimes /> : <CgMenuRight color="#1A5D1A"/>}
+            {show ? <FaTimes /> : <CgMenuRight color="#1A5D1A" />}
           </MobileIcon>
           <NavMenu show={show}>
             <NavLinkWrapper>
@@ -68,25 +68,36 @@ const Navbar = () => {
                 </NavItem>
               ))}
             </NavLinkWrapper>
-            
-            {!token ? 
-             ( <>
+
+            {!token ? (
+              <>
                 <NavButtons show={show}>
                   <NavItem>
-                    <NavLinks onClick={() => closeMobileMenu('/login', null)}>
+                    <NavLinks onClick={() => closeMobileMenu("/login", null)}>
                       Login
                     </NavLinks>
                   </NavItem>
                   <NavItem>
-                    <NavLinks btn='true' onClick={() => closeMobileMenu('/register', null)}>
+                    <NavLinks
+                      btn="true"
+                      onClick={() => closeMobileMenu("/register", null)}
+                    >
                       Sign Up Free
                     </NavLinks>
                   </NavItem>
                 </NavButtons>
-              </>) : 
-              (<>
-                <button type="button" className="btn btn-outline-success btn-lg my-2 me-3" onClick={handleSignOut}>Sign out</button>
-              </>)}
+              </>
+            ) : (
+              <>
+                <button
+                  type="button"
+                  className="btn btn-outline-success btn-lg my-2 me-3"
+                  onClick={handleSignOut}
+                >
+                  Sign out
+                </button>
+              </>
+            )}
           </NavMenu>
         </NavbarContainer>
       </Nav>
