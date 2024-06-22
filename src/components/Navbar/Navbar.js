@@ -7,7 +7,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   Nav,
   NavbarContainer,
-  NavIcon,
   MobileIcon,
   NavMenu,
   NavLinks,

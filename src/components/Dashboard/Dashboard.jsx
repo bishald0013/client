@@ -5,7 +5,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import Alert from "../../alert/Alert";
 import {
   useCreateAlertMutation,
-  useDeleteAlertMutation,
 } from "../../services/alertAuthApi";
 import { useGetAlertsQuery } from "../../services/alertAuthApi";
 import { toast } from "react-toastify";
@@ -29,7 +28,6 @@ function Dashboard() {
 
   const [allAlerts, setAllAlerts] = useState({});
   const [createAlert] = useCreateAlertMutation();
-  const [deleteAlert] = useDeleteAlertMutation();
   const token = localStorage.getItem("token");
   const { data, isSuccess } = useGetAlertsQuery(token);
 
@@ -61,7 +59,6 @@ function Dashboard() {
     };
     setLoading("save-alert");
     const response = await createAlert({ alertData, token });
-    console.log(response);
     if (response?.data?.setAlert?.status === true) {
       toast.success("Alert Created Successfully");
       window.location.reload();
@@ -77,9 +74,6 @@ function Dashboard() {
       "Currently, you can't delete alerts, but stay tuned—this exciting feature is launching soon!"
     );
     try {
-      // For deleting
-      // await deleteAlert({ id, token }).unwrap();
-      // Optionally refetch or update the list in some way
     } catch (error) {
       console.error("Error deleting alert:", error);
     }
