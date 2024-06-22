@@ -4,7 +4,7 @@ export const alertAuthApi = createApi({
   reducerPath: "alertAuthApi",
 
   baseQuery: fetchBaseQuery({
-    baseUrl: `{process.env.API_URL}api/alert`,
+    baseUrl: `https://server-side-v65f.onrender.com/api/alert`,
   }),
 
   endpoints: (builder) => ({
