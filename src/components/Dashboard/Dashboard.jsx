@@ -3,7 +3,10 @@ import "./Dashboard.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Alert from "../../alert/Alert";
-import { useCreateAlertMutation } from "../../services/alertAuthApi";
+import {
+  useCreateAlertMutation,
+  useDeleteAlertMutation,
+} from "../../services/alertAuthApi";
 import { useGetAlertsQuery } from "../../services/alertAuthApi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +29,7 @@ function Dashboard() {
 
   const [allAlerts, setAllAlerts] = useState({});
   const [createAlert] = useCreateAlertMutation();
+  const [deleteAlert] = useDeleteAlertMutation();
   const token = localStorage.getItem("token");
   const { data, isSuccess } = useGetAlertsQuery(token);
 
@@ -55,7 +59,7 @@ function Dashboard() {
       alertDate: formattedReminderDate,
       alertType,
     };
-    setLoading(true);
+    setLoading("save-alert");
     const response = await createAlert({ alertData, token });
     console.log(response);
     if (response?.data?.setAlert?.status === true) {
@@ -63,6 +67,21 @@ function Dashboard() {
       window.location.reload();
     } else {
       toast.error("Fail to create Alert. Please try again");
+    }
+    setLoading(false);
+  };
+
+  const handleDelete = async (id) => {
+    setLoading("delete-alert");
+    toast.info(
+      "Currently, you can't delete alerts, but stay tuned—this exciting feature is launching soon!"
+    );
+    try {
+      // For deleting
+      // await deleteAlert({ id, token }).unwrap();
+      // Optionally refetch or update the list in some way
+    } catch (error) {
+      console.error("Error deleting alert:", error);
     }
     setLoading(false);
   };
@@ -84,7 +103,7 @@ function Dashboard() {
             <div className="row">
               <div className="col-lg-8">
                 <div className="alert alert-secondary">Your Alert Lists</div>
-                <Alert allAlert={allAlerts} />
+                <Alert allAlert={allAlerts} onDelete={handleDelete} />
               </div>
               <div className="col-lg-4">
                 <div className="alert alert-secondary">Create Alert</div>
@@ -130,7 +149,7 @@ function Dashboard() {
                       wrapperClassName="dateTimeInputWrapper"
                     />
                   </div>
-                  {loading ? (
+                  {loading === "save-alert" ? (
                     <div
                       className="btn btn-outline-success"
                       style={{ width: "100%" }}
