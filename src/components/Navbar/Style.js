@@ -36,7 +36,6 @@ export const NavLogo = styled(Link)`
   align-items: center;
   @media screen and (max-width: 960px) {
     height: 100%;
-    margin: 10px 0;
   }
 `;
 
@@ -128,7 +127,7 @@ export const MobileIcon = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 60%);
+    transform: translate(-100%, 40%);
     font-size: 1.8rem;
     cursor: pointer;
   }
