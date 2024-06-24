@@ -30,16 +30,25 @@ export const NavLogo = styled(Link)`
   cursor: pointer;
   text-decoration: none;
   height: 100%;
+  width: 30%;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  padding: 0 90px;
+  @media screen and (max-width: 960px) {
+    height: 100%;
+  }
 `;
 
 export const NavLogoImg = styled.img`
   height: 80%;
   width: auto;
   object-fit: cover;
+  margin-left: 40px;
+
+  @media screen and (max-width: 960px) {
+    height: 60%;
+    text-shadow: 10px 10px 10px black;
+  }
 `;
 
 export const NavIcon = ({ iconColor }) => {
@@ -118,7 +127,7 @@ export const MobileIcon = styled.div`
     position: absolute;
     top: 0;
     right: 0;
-    transform: translate(-100%, 60%);
+    transform: translate(-100%, 40%);
     font-size: 1.8rem;
     cursor: pointer;
   }
